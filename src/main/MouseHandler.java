@@ -1,6 +1,6 @@
 package main;
 
-import view.interfaces.PaintCanvasBase;
+import view.interfaces.PCanvasFoundation;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -10,9 +10,9 @@ public class MouseHandler extends MouseAdapter {
 
     Point startPoint;
     Point endPoint;
- private PaintCanvasBase paintCanvas;
+ private PCanvasFoundation paintCanvas;
 
-    public MouseHandler(PaintCanvasBase paintCanvas) {
+    public MouseHandler(PCanvasFoundation paintCanvas) {
         this.paintCanvas= paintCanvas;
     }
 

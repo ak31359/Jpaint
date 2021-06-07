@@ -1,0 +1,8 @@
+The observer pattern is used for the changing the shape mode, since it helps us in implementing for many.
+
+Static Factory Pattern is used to handle different types of shapes, filled, outlined, and filled and outlined
+
+Command Pattern is used to implement the Undo Redo Commands
+
+Strategy Pattern is used to handle Drawable and Shape type instance of Static Factory, since these different methods are
+mostly changed during runtime

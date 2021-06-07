@@ -1,52 +1,52 @@
 package model.dialogs;
 
 import model.ShapeColor;
-import model.ShapeShadingType;
+import model.ShadingType;
 import model.ShapeType;
 import model.MouseMode;
-import model.interfaces.IApplicationState;
-import model.interfaces.IDialogProvider;
-import view.interfaces.IDialogChoice;
+import model.interfaces.AppState;
+import model.interfaces.DProvider;
+import view.interfaces.DChoiceInterface;
 
-public class DialogProvider implements IDialogProvider {
-    private final IDialogChoice<ShapeType> chooseShapeDialog;
-    private final IDialogChoice<ShapeColor> choosePrimaryColorDialog;
-    private final IDialogChoice<ShapeColor> chooseSecondaryColorDialog;
-    private final IDialogChoice<ShapeShadingType> chooseShadingTypeDialog;
-    private final IDialogChoice<MouseMode> chooseStartAndEndPointModeDialog;
-    private final IApplicationState applicationState;
+public class DialogProvider implements DProvider {
+    private final DChoiceInterface<ShapeType> chooseShapeDialog;
+    private final DChoiceInterface<ShapeColor> choosePrimaryColorDialog;
+    private final DChoiceInterface<ShapeColor> chooseSecondaryColorDialog;
+    private final DChoiceInterface<ShadingType> chooseShadingTypeDialog;
+    private final DChoiceInterface<MouseMode> chooseStartAndEndPointModeDialog;
+    private final AppState applicationState;
 
-    public DialogProvider(IApplicationState applicationState) {
+    public DialogProvider(AppState applicationState) {
         this.applicationState = applicationState;
-        chooseShapeDialog = new ChooseShapeDialog(this.applicationState);
-        choosePrimaryColorDialog = new ChoosePrimaryColorDialog(this.applicationState);
-        chooseSecondaryColorDialog = new ChooseSecondaryColorDialog(this.applicationState);
-        chooseShadingTypeDialog = new ChooseShadingTypeDialog(this.applicationState);
-        chooseStartAndEndPointModeDialog = new ChooseStartAndEndPointModeDialog(this.applicationState);
+        chooseShapeDialog = new DialogShape(this.applicationState);
+        choosePrimaryColorDialog = new DialogPrimaryC(this.applicationState);
+        chooseSecondaryColorDialog = new DialogSecondaryC(this.applicationState);
+        chooseShadingTypeDialog = new DialogShadingType(this.applicationState);
+        chooseStartAndEndPointModeDialog = new DialogPointer(this.applicationState);
     }
 
     @Override
-    public IDialogChoice<ShapeType> getChooseShapeDialog() {
+    public DChoiceInterface<ShapeType> getChooseShapeDialog() {
         return chooseShapeDialog;
     }
 
     @Override
-    public IDialogChoice<ShapeColor> getChoosePrimaryColorDialog() {
+    public DChoiceInterface<ShapeColor> getChoosePrimaryColorDialog() {
         return choosePrimaryColorDialog;
     }
 
     @Override
-    public IDialogChoice<ShapeColor> getChooseSecondaryColorDialog() {
+    public DChoiceInterface<ShapeColor> getChooseSecondaryColorDialog() {
         return chooseSecondaryColorDialog;
     }
 
     @Override
-    public IDialogChoice<ShapeShadingType> getChooseShadingTypeDialog() {
+    public DChoiceInterface<ShadingType> getChooseShadingTypeDialog() {
         return chooseShadingTypeDialog;
     }
 
     @Override
-    public IDialogChoice<MouseMode> getChooseStartAndEndPointModeDialog() {
+    public DChoiceInterface<MouseMode> getChooseStartAndEndPointModeDialog() {
         return chooseStartAndEndPointModeDialog;
     }
 }

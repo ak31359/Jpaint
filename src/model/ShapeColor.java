@@ -4,7 +4,8 @@ import java.awt.*;
 
 public enum ShapeColor {
     BLACK {
-        public Color getColor(){
+        @SuppressWarnings("unused")
+		public Color getColor(){
             return Color.BLACK;
         }
     },

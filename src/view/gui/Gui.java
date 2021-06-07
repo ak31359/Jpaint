@@ -3,27 +3,28 @@ package view.gui;
 import javax.swing.*;
 
 import view.EventName;
-import view.interfaces.IDialogChoice;
-import view.interfaces.IEventCallback;
-import view.interfaces.IGuiWindow;
-import view.interfaces.IUiModule;
+import view.interfaces.DChoiceInterface;
+import view.interfaces.CallbackInterface;
+import view.interfaces.WindoeGUIInterface;
+import view.interfaces.UIModuleInterface;
 
-public class Gui implements IUiModule {
+public class GUI implements UIModuleInterface {
 
-    private final IGuiWindow gui;
+    private final WindoeGUIInterface gui;
 
-    public Gui(IGuiWindow gui) {
+    public GUI(WindoeGUIInterface gui) {
         this.gui = gui;
     }
     
 	@Override
-	public void addEvent(EventName eventName, IEventCallback callback) {
+	public void addEvent(EventName eventName, CallbackInterface callback) {
 		JButton button = gui.getButton(eventName);
 		button.addActionListener((ActionEvent) -> callback.run());
 	}
 
-    @Override
-    public <T> T getDialogResponse(IDialogChoice dialogSettings) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+    public <T> T getDialogResponse(DChoiceInterface dialogSettings) {
         Object selectedValue = JOptionPane.showInputDialog(null,
                 dialogSettings.getDialogText(),
                 dialogSettings.getDialogTitle(),
