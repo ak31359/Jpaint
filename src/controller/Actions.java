@@ -29,6 +29,8 @@ public class Actions implements PaintControllerInterface {
         uiModule.addEvent(EventName.COPY, () -> CopyProcess());
         uiModule.addEvent(EventName.PASTE, () -> PasteProcess());
         uiModule.addEvent(EventName.DELETE, () -> DeleteProcess());
+        uiModule.addEvent(EventName.GROUP, () -> GroupProcess());
+        uiModule.addEvent(EventName.UNGROUP, () -> UngroupProcess());
     }
 
 
@@ -66,5 +68,18 @@ public class Actions implements PaintControllerInterface {
         DeleteShape deleteShape = new DeleteShape(paintCanvas);
         DeleteCmd deleteShapeCommand = new DeleteCmd(deleteShape);
         deleteShapeCommand.run();
+    }
+
+
+    public void GroupProcess() {
+        CollectionGrouping groupShape = new CollectionGrouping(paintCanvas);
+        GroupCmd groupShapeCommand = new GroupCmd(groupShape);
+        groupShapeCommand.run();
+    }
+    public void UngroupProcess() {
+        CollectionUngrouping ungroupShape = new CollectionUngrouping(paintCanvas);
+        UngroupCmd ungroupShapeCommand = new UngroupCmd(ungroupShape);
+        ungroupShapeCommand.run();
+
     }
 }
